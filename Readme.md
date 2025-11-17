@@ -1,5 +1,8 @@
 
 # RedVortex ⚡ Ethical Hacker & Web Penetration Tester
+![RedVortex Badge](https://img.shields.io/badge/RedVortex%20⚡%20Ethical%20Hacker%20%26%20Web%20Penetration%20Tester-8A2BE2?style=for-the-badge&logo=security&logoColor=white)
+
+
 
 ![Header](https://img.shields.io/badge/Ethical%20Hacking-Web%20Pentesting-%23ff0000?style=for-the-badge&logo=security&logoColor=white)
 > **Securing the web, one vulnerability at a time.**  
