@@ -8,11 +8,6 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/shubham-gautam-225187218/)
 [![Telegram](https://img.shields.io/badge/Telegram-@RedVortex0__0-2CA5E0?style=flat-square&logo=telegram)](https://t.me/Redvortex0_0)
 
-📊 GitHub Stats
-<div align="center"> <img height="180em" src="https://github-readme-stats.vercel.app/api?username=anonymous777999&show_icons=true&theme=tokyonight&include_all_commits=true&count_private=true"/> <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=anonymous777999&layout=compact&theme=tokyonight&langs_count=8"/> </div>
-📫 Get In Touch
-<p align="left"> <a href="https://linkedin.com/in/shubham-gautam-225187218"><img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat-square&logo=linkedin" alt="LinkedIn"></a> <a href="mailto:redvortex608@gmail.com"><img src="https://img.shields.io/badge/Email-Contact-red?style=flat-square&logo=gmail" alt="Email"></a> <a href="https://t.me/Redvortex0_0"><img src="https://img.shields.io/badge/Telegram-@Redvortex0__0-2CA5E0?style=flat-square&logo=telegram" alt="Telegram"></a> </p>
-
 ---
 
 ## What I Do 🔍
@@ -28,23 +23,26 @@ I help organizations identify and eliminate critical security flaws before attac
 ---
 
 ## Tech Stack & Arsenal 🛠️
-<div align="center">
-[![Burp Suite](https://img.shields.io/badge/Burp%20Suite-FF6F00?style=flat-square&logo=burp-suite)](https://portswigger.net/burp)
-https://img.shields.io/badge/Nuclei-000000?style=flat-square&logo=nuclei
-https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white
-https://img.shields.io/badge/Bash-4EAA25?style=flat-square&logo=gnu-bash&logoColor=white
-https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black
-https://img.shields.io/badge/Kali%20Linux-557C94?style=flat-square&logo=kali-linux&logoColor=white
-</div>
 
 ```text
 Burp Suite Pro ⚔️  |  Nuclei  |  ffuf  |  Subfinder  |  Amass  |  Katana
 SQLMap  |  Nikto  |  Dirsearch  |  Bash  |  Python  |  Go  |  Docker
-Kali Linux  |  Git  |  Markdown  |  Terminal Wizardry
+Kali Linux  |  Parrot OS  |  Git  |  Markdown  |  Terminal Wizardry
 
+Featured Open-Source Tools 🚀
+Tool	Description	Stars / Link
+Vortex-Recon	Lightning-fast post-exploitation reconnaissance toolkit. Comprehensive internal enumeration with stunning TUI output. Built for red teams & SOC.	GitHub stars
+VortexEye	Advanced bash reconnaissance suite for rapid system, network, and user intel gathering post-compromise.	GitHub stars
+RedVortex-XP-System	Gamified terminal-based hacker leveling system. Earn XP, complete quests, unlock skills — all in your shell.	GitHub stars
+Let’s Connect 🤝
+Feel free to reach out for penetration testing, security consulting, collaboration, or just to talk shop.
 
-🚀 Featured Tools & Projects
-Repository	Description	Tech	Link
-Vortex-Recon	Lightning-fast post-exploitation reconnaissance toolkit. Comprehensive system, network, and user enumeration with beautiful, colorized terminal output. Trusted by red teams worldwide.	Bash	Vortex-Recon
-VortexEye	Advanced reconnaissance and active information gathering suite built for speed and depth during internal engagements.	Bash	VortexEye
-RedVortex-XP-System	Gamified terminal-based hacker leveling system. Earn XP, complete quests, unlock skills — turn skill-building into an RPG inside your terminal.	Bash	RedVortex-XP
+Email: redvortex608@gmail.com
+LinkedIn: linkedin.com/in/shubham-gautam-225187218
+Telegram: @Redvortex0_0
+GitHub: github.com/anonymous777999
+<div align="center">
+Built by RedVortex — Securing the web, one bug at a time. ⚡
+
+<img src="https://komarev.com/ghpvc/?username=anonymous777999&color=red&style=for-the-badge" alt="Profile views" /></div>
+```
