@@ -13,14 +13,6 @@
 📫 Get In Touch
 <p align="left"> <a href="https://linkedin.com/in/shubham-gautam-225187218"><img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat-square&logo=linkedin" alt="LinkedIn"></a> <a href="mailto:redvortex608@gmail.com"><img src="https://img.shields.io/badge/Email-Contact-red?style=flat-square&logo=gmail" alt="Email"></a> <a href="https://t.me/Redvortex0_0"><img src="https://img.shields.io/badge/Telegram-@Redvortex0__0-2CA5E0?style=flat-square&logo=telegram" alt="Telegram"></a> </p>
 
-<div align="center">
-[![Burp Suite](https://img.shields.io/badge/Burp%20Suite-FF6F00?style=flat-square&logo=burp-suite)](https://portswigger.net/burp)
-https://img.shields.io/badge/Nuclei-000000?style=flat-square&logo=nuclei
-https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white
-https://img.shields.io/badge/Bash-4EAA25?style=flat-square&logo=gnu-bash&logoColor=white
-https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black
-https://img.shields.io/badge/Kali%20Linux-557C94?style=flat-square&logo=kali-linux&logoColor=white
-</div>
 ---
 
 ## What I Do 🔍
@@ -36,6 +28,14 @@ I help organizations identify and eliminate critical security flaws before attac
 ---
 
 ## Tech Stack & Arsenal 🛠️
+<div align="center">
+[![Burp Suite](https://img.shields.io/badge/Burp%20Suite-FF6F00?style=flat-square&logo=burp-suite)](https://portswigger.net/burp)
+https://img.shields.io/badge/Nuclei-000000?style=flat-square&logo=nuclei
+https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white
+https://img.shields.io/badge/Bash-4EAA25?style=flat-square&logo=gnu-bash&logoColor=white
+https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black
+https://img.shields.io/badge/Kali%20Linux-557C94?style=flat-square&logo=kali-linux&logoColor=white
+</div>
 
 ```text
 Burp Suite Pro ⚔️  |  Nuclei  |  ffuf  |  Subfinder  |  Amass  |  Katana
