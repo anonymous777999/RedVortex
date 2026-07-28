@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -6,8 +7,8 @@ import { projects, personalInfo } from '../../data/portfolio'
 export default function ProjectDetail() {
   const router = useRouter()
   const { id } = router.query
+  const [zoomed, setZoomed] = useState(false)
 
-  // Wait for router to be ready before looking up project
   if (!router.isReady) {
     return (
       <div className="loading-page">
@@ -101,6 +102,36 @@ export default function ProjectDetail() {
             </div>
           </div>
 
+          {/* Screenshot Gallery */}
+          {project.screenshot && (
+            <div className="screenshot-section">
+              <h3 className="section-subtitle-mono">// terminal_output.svg</h3>
+              <div className="screenshot-wrapper">
+                <div className="screenshot-frame" style={{ '--accent': project.color }}>
+                  <div className="screenshot-header">
+                    <div className="ss-dots">
+                      <span className="ss-dot red" />
+                      <span className="ss-dot yellow" />
+                      <span className="ss-dot green" />
+                    </div>
+                    <span className="ss-title mono">root@redvortex:~/tools/{project.id}</span>
+                    <button className="ss-expand" onClick={() => setZoomed(true)} title="Expand">
+                      ⊞
+                    </button>
+                  </div>
+                  <img
+                    src={project.screenshot}
+                    alt={`${project.title} terminal output`}
+                    className="screenshot-img"
+                  />
+                </div>
+                <p className="screenshot-caption mono">
+                  Live terminal output from {project.title} — click to expand
+                </p>
+              </div>
+            </div>
+          )}
+
           {/* Tech Stack */}
           <div className="tech-section">
             <h3 className="section-subtitle-mono">// stack.config</h3>
@@ -134,6 +165,16 @@ export default function ProjectDetail() {
         </div>
       </section>
 
+      {/* Lightbox */}
+      {zoomed && project.screenshot && (
+        <div className="lightbox" onClick={() => setZoomed(false)}>
+          <div className="lightbox-content" onClick={e => e.stopPropagation()}>
+            <button className="lightbox-close" onClick={() => setZoomed(false)}>✕</button>
+            <img src={project.screenshot} alt={`${project.title} screenshot`} className="lightbox-img" />
+          </div>
+        </div>
+      )}
+
       <style jsx>{`
         .breadcrumb {
           font-family: 'JetBrains Mono', monospace;
@@ -142,11 +183,7 @@ export default function ProjectDetail() {
           display: flex;
           gap: 8px;
         }
-        .breadcrumb-link {
-          color: var(--chrome);
-          text-decoration: none;
-          transition: color 0.2s;
-        }
+        .breadcrumb-link { color: var(--chrome); text-decoration: none; transition: color 0.2s; }
         .breadcrumb-link:hover { color: var(--accent); }
         .breadcrumb-sep { color: var(--text-dim); }
         .breadcrumb-current { color: var(--text-dim); }
@@ -170,11 +207,7 @@ export default function ProjectDetail() {
           border: 1px solid;
           margin-bottom: 20px;
         }
-        .status-dot {
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-        }
+        .status-dot { width: 6px; height: 6px; border-radius: 50%; }
 
         .project-title {
           font-family: 'JetBrains Mono', monospace;
@@ -184,11 +217,7 @@ export default function ProjectDetail() {
           color: var(--text-primary);
         }
 
-        .project-subtitle {
-          font-size: 1rem;
-          color: var(--accent);
-          margin-bottom: 24px;
-        }
+        .project-subtitle { font-size: 1rem; color: var(--accent); margin-bottom: 24px; }
 
         .project-desc {
           color: var(--text-secondary);
@@ -197,10 +226,7 @@ export default function ProjectDetail() {
           margin-bottom: 32px;
         }
 
-        .hero-actions {
-          display: flex;
-          gap: 12px;
-        }
+        .hero-actions { display: flex; gap: 12px; }
 
         .hero-terminal {
           background: #0d0d14;
@@ -251,9 +277,7 @@ export default function ProjectDetail() {
           gap: 16px;
           transition: transform 0.2s, border-color 0.2s;
         }
-        .feature-card:hover {
-          transform: translateY(-2px);
-        }
+        .feature-card:hover { transform: translateY(-2px); }
 
         .feature-num {
           font-family: 'JetBrains Mono', monospace;
@@ -269,15 +293,77 @@ export default function ProjectDetail() {
           line-height: 1.6;
         }
 
-        .tech-section {
-          margin-bottom: 80px;
+        .screenshot-section { margin-bottom: 80px; }
+
+        .screenshot-wrapper {
+          max-width: 760px;
         }
 
-        .tech-stack {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 12px;
+        .screenshot-frame {
+          border: 1px solid;
+          border-radius: 12px;
+          overflow: hidden;
+          background: #0d0d14;
+          transition: all 0.3s;
         }
+
+        .screenshot-frame:hover {
+          box-shadow: 0 0 30px color-mix(in srgb, var(--accent) 15%, transparent);
+        }
+
+        .screenshot-header {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 16px;
+          background: #111118;
+          border-bottom: 1px solid var(--border);
+        }
+
+        .ss-dots { display: flex; gap: 8px; }
+        .ss-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .ss-dot.red { background: #ff5f56; }
+        .ss-dot.yellow { background: #ffbd2e; }
+        .ss-dot.green { background: #27c93f; }
+
+        .ss-title {
+          flex: 1;
+          font-size: 0.78rem;
+          color: var(--text-dim);
+          margin-left: 8px;
+        }
+
+        .ss-expand {
+          background: none;
+          border: 1px solid var(--border);
+          border-radius: 4px;
+          color: var(--text-dim);
+          cursor: pointer;
+          padding: 2px 8px;
+          font-size: 0.85rem;
+          transition: all 0.2s;
+        }
+        .ss-expand:hover {
+          color: var(--chrome);
+          border-color: var(--chrome);
+        }
+
+        .screenshot-img {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+
+        .screenshot-caption {
+          text-align: center;
+          font-size: 0.78rem;
+          color: var(--text-dim);
+          margin-top: 12px;
+        }
+
+        .tech-section { margin-bottom: 80px; }
+
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 12px; }
 
         .tech-card {
           background: var(--bg-card);
@@ -297,15 +383,9 @@ export default function ProjectDetail() {
           color: var(--text-primary);
         }
 
-        .highlights-section {
-          margin-bottom: 80px;
-        }
+        .highlights-section { margin-bottom: 80px; }
 
-        .highlights-grid {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 12px;
-        }
+        .highlights-grid { display: flex; flex-wrap: wrap; gap: 12px; }
 
         .highlight-card {
           font-family: 'JetBrains Mono', monospace;
@@ -317,9 +397,7 @@ export default function ProjectDetail() {
           gap: 8px;
           transition: all 0.2s;
         }
-        .highlight-card:hover {
-          transform: translateY(-2px);
-        }
+        .highlight-card:hover { transform: translateY(-2px); }
 
         .hl-bracket { opacity: 0.4; }
         .hl-text { font-weight: 500; }
@@ -330,11 +408,53 @@ export default function ProjectDetail() {
           border-top: 1px solid var(--border);
         }
 
+        /* Lightbox */
+        .lightbox {
+          position: fixed;
+          inset: 0;
+          z-index: 9999;
+          background: rgba(0,0,0,0.85);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 40px;
+          animation: fadeIn 0.2s ease;
+        }
+
+        .lightbox-content {
+          position: relative;
+          max-width: 95vw;
+          max-height: 90vh;
+        }
+
+        .lightbox-img {
+          width: 100%;
+          height: auto;
+          max-height: 85vh;
+          object-fit: contain;
+          border-radius: 8px;
+          border: 1px solid var(--border);
+        }
+
+        .lightbox-close {
+          position: absolute;
+          top: -40px;
+          right: 0;
+          background: none;
+          border: none;
+          color: white;
+          font-size: 1.5rem;
+          cursor: pointer;
+          padding: 8px;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
         @media (max-width: 900px) {
-          .project-hero {
-            grid-template-columns: 1fr;
-            gap: 32px;
-          }
+          .project-hero { grid-template-columns: 1fr; gap: 32px; }
           .project-title { font-size: 1.8rem; }
           .features-grid { grid-template-columns: 1fr; }
         }

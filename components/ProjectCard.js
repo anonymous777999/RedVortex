@@ -1,50 +1,76 @@
+import { useState } from 'react'
+
 export default function ProjectCard({ project, index }) {
+  const [zoomed, setZoomed] = useState(false)
+
   return (
-    <div className="project-card" style={{ '--accent-color': project.color }}>
-      <div className="card-glow" />
-      <div className="card-header">
-        <div className="card-icon" style={{ background: `${project.color}20`, color: project.color }}>
-          {index + 1}
-        </div>
-        <div className="card-titles">
-          <h3 className="card-title">{project.title}</h3>
-          <p className="card-subtitle">{project.subtitle}</p>
-        </div>
-      </div>
-
-      <p className="card-description">{project.description}</p>
-
-      <div className="card-highlights">
-        {project.highlights.map(h => (
-          <span key={h} className="highlight-tag" style={{ background: `${project.color}15`, color: project.color, borderColor: `${project.color}30` }}>
-            {h}
-          </span>
-        ))}
-      </div>
-
-      <div className="card-tech">
-        {project.tech.map(t => (
-          <span key={t} className="tech-tag">{t}</span>
-        ))}
-      </div>
-
-      <div className="card-actions">
-        <a href={project.github} target="_blank" rel="noopener noreferrer" className="card-btn primary" style={{ background: project.color, color: '#0a0a0f' }}>
-          <span>⟨</span> Source <span>⟩</span>
-        </a>
-        {project.live && project.live !== '#' && (
-          <a href={project.live} target="_blank" rel="noopener noreferrer" className="card-btn secondary">
-            <span>▶</span> Live Demo
-          </a>
+    <>
+      <div className="project-card" style={{ '--accent-color': project.color }}>
+        <div className="card-glow" />
+        
+        {/* Screenshot preview */}
+        {project.screenshot && (
+          <div className="card-screenshot" onClick={() => setZoomed(true)}>
+            <img src={project.screenshot} alt={`${project.title} terminal screenshot`} className="screenshot-img" />
+            <div className="screenshot-overlay">
+              <span className="zoom-icon">⊞</span>
+              <span className="zoom-label">Click to expand</span>
+            </div>
+          </div>
         )}
+
+        <div className="card-header">
+          <div className="card-icon" style={{ background: `${project.color}20`, color: project.color }}>
+            {index + 1}
+          </div>
+          <div className="card-titles">
+            <h3 className="card-title">{project.title}</h3>
+            <p className="card-subtitle">{project.subtitle}</p>
+          </div>
+        </div>
+
+        <p className="card-description">{project.description}</p>
+
+        <div className="card-highlights">
+          {project.highlights.slice(0, 4).map(h => (
+            <span key={h} className="highlight-tag" style={{ background: `${project.color}15`, color: project.color, borderColor: `${project.color}30` }}>
+              {h}
+            </span>
+          ))}
+        </div>
+
+        <div className="card-tech">
+          {project.tech.slice(0, 6).map(t => (
+            <span key={t} className="tech-tag">{t}</span>
+          ))}
+        </div>
+
+        <div className="card-actions">
+          <a href={`/projects/${project.id}`} className="card-btn primary" style={{ background: project.color, color: '#0a0a0f' }}>
+            <span>⟨</span> Details <span>⟩</span>
+          </a>
+          <a href={project.github} target="_blank" rel="noopener noreferrer" className="card-btn secondary">
+            <span>⟨/⟩</span> Source
+          </a>
+        </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {zoomed && project.screenshot && (
+        <div className="lightbox" onClick={() => setZoomed(false)}>
+          <div className="lightbox-content" onClick={e => e.stopPropagation()}>
+            <button className="lightbox-close" onClick={() => setZoomed(false)}>✕</button>
+            <img src={project.screenshot} alt={`${project.title} screenshot`} className="lightbox-img" />
+          </div>
+        </div>
+      )}
 
       <style jsx>{`
         .project-card {
           background: var(--bg-card);
           border: 1px solid var(--border);
           border-radius: 16px;
-          padding: 28px;
+          padding: 0;
           position: relative;
           overflow: hidden;
           transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
@@ -70,11 +96,60 @@ export default function ProjectCard({ project, index }) {
 
         .project-card:hover .card-glow { opacity: 1; }
 
+        .card-screenshot {
+          position: relative;
+          width: 100%;
+          height: 160px;
+          overflow: hidden;
+          cursor: pointer;
+          border-bottom: 1px solid var(--border);
+        }
+
+        .screenshot-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: top;
+          transition: transform 0.4s;
+        }
+
+        .project-card:hover .screenshot-img {
+          transform: scale(1.05);
+        }
+
+        .screenshot-overlay {
+          position: absolute;
+          inset: 0;
+          background: rgba(0,0,0,0.5);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+
+        .card-screenshot:hover .screenshot-overlay {
+          opacity: 1;
+        }
+
+        .zoom-icon {
+          font-size: 1.5rem;
+          color: white;
+        }
+
+        .zoom-label {
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 0.75rem;
+          color: white;
+        }
+
         .card-header {
           display: flex;
           gap: 16px;
           align-items: flex-start;
-          margin-bottom: 16px;
+          padding: 20px 24px 0;
         }
 
         .card-icon {
@@ -110,14 +185,14 @@ export default function ProjectCard({ project, index }) {
           color: var(--text-secondary);
           font-size: 0.92rem;
           line-height: 1.7;
-          margin-bottom: 20px;
+          margin: 12px 24px 0;
         }
 
         .card-highlights {
           display: flex;
           flex-wrap: wrap;
           gap: 8px;
-          margin-bottom: 16px;
+          padding: 16px 24px 0;
         }
 
         .highlight-tag {
@@ -132,7 +207,7 @@ export default function ProjectCard({ project, index }) {
           display: flex;
           flex-wrap: wrap;
           gap: 6px;
-          margin-bottom: 24px;
+          padding: 12px 24px 0;
         }
 
         .tech-tag {
@@ -149,6 +224,7 @@ export default function ProjectCard({ project, index }) {
           display: flex;
           gap: 12px;
           flex-wrap: wrap;
+          padding: 20px 24px 24px;
         }
 
         .card-btn {
@@ -177,7 +253,56 @@ export default function ProjectCard({ project, index }) {
           border-color: var(--accent-color);
           color: var(--accent-color);
         }
+
+        /* Lightbox */
+        .lightbox {
+          position: fixed;
+          inset: 0;
+          z-index: 9999;
+          background: rgba(0,0,0,0.85);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 40px;
+          animation: fadeIn 0.2s ease;
+        }
+
+        .lightbox-content {
+          position: relative;
+          max-width: 95vw;
+          max-height: 90vh;
+        }
+
+        .lightbox-img {
+          width: 100%;
+          height: auto;
+          max-height: 85vh;
+          object-fit: contain;
+          border-radius: 8px;
+          border: 1px solid var(--border);
+        }
+
+        .lightbox-close {
+          position: absolute;
+          top: -40px;
+          right: 0;
+          background: none;
+          border: none;
+          color: white;
+          font-size: 1.5rem;
+          cursor: pointer;
+          padding: 8px;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @media (max-width: 480px) {
+          .card-screenshot { height: 120px; }
+        }
       `}</style>
-    </div>
+    </>
   )
 }

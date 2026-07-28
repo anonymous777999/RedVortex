@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 540" font-family="'JetBrains Mono','Courier New',monospace">
+  <defs>
+    <linearGradient id="term" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0e14"/>
+      <stop offset="100%" stop-color="#03050a"/>
+    </linearGradient>
+    <linearGradient id="header" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#111118"/>
+      <stop offset="100%" stop-color="#16161f"/>
+    </linearGradient>
+  </defs>
+  <!-- Window -->
+  <rect x="10" y="10" width="760" height="520" rx="10" fill="url(#term)" stroke="#1e293b" stroke-width="1.5"/>
+  <!-- Header -->
+  <rect x="10" y="10" width="760" height="38" rx="10" fill="url(#header)"/>
+  <rect x="10" y="38" width="760" height="10" fill="url(#header)"/>
+  <circle cx="32" cy="29" r="6" fill="#ff5f56"/>
+  <circle cx="50" cy="29" r="6" fill="#ffbd2e"/>
+  <circle cx="68" cy="29" r="6" fill="#27c93f"/>
+  <text x="85" y="33" font-size="11" fill="#4a5568">redvortex@xp:~/XP-System — bash</text>
+  <!-- Title -->
+  <text x="50" y="78" font-size="14" fill="#f59e0b" font-weight="bold">⚡ REDVORTEX XP SYSTEM v2.0 ⚡</text>
+  <!-- Level/XP bar -->
+  <rect x="50" y="95" width="680" height="26" rx="4" fill="#1a1a2e" stroke="#f59e0b" stroke-width="1"/>
+  <rect x="50" y="95" width="408" height="26" rx="4" fill="url(#xpGrad)" opacity="0.8"/>
+  <linearGradient id="xpGrad" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0%" stop-color="#f59e0b"/>
+    <stop offset="100%" stop-color="#22d3ee"/>
+  </linearGradient>
+  <text x="390" y="112" font-size="11" fill="#0a0a0f" font-weight="bold" text-anchor="middle">██████████████░░░░░░   LVL 7 — 4080/6000 XP</text>
+  <!-- Stats row -->
+  <text x="50" y="148" font-size="10" fill="#64748b">Rank:</text>
+  <text x="110" y="148" font-size="10" fill="#22d3ee">Script Kiddie →</text>
+  <text x="320" y="148" font-size="10" fill="#f59e0b">» Hacker «</text>
+  <text x="480" y="148" font-size="10" fill="#64748b">Streak:</text>
+  <text x="540" y="148" font-size="10" fill="#10b981">15 days 🔥</text>
+  <!-- Control Panel -->
+  <text x="50" y="180" font-size="10" fill="#a78bfa">╔══════════════════════════════════════════════════════╗</text>
+  <text x="50" y="195" font-size="10" fill="#a78bfa">║</text>
+  <text x="65" y="195" font-size="10" fill="#22d3ee" font-weight="bold">🎮 CONTROL PANEL</text>
+  <text x="370" y="195" font-size="10" fill="#a78bfa">║</text>
+  <text x="50" y="210" font-size="10" fill="#a78bfa">╠══════════════════════════════════════════════════════╣</text>
+  <text x="50" y="228" font-size="10" fill="#a78bfa">║</text>
+  <text x="65" y="228" font-size="10" fill="#22d3ee">[1]</text>
+  <text x="85" y="228" font-size="10" fill="#f0f0f0">Add XP</text>
+  <text x="370" y="228" font-size="10" fill="#a78bfa">║</text>
+  <text x="50" y="245" font-size="10" fill="#a78bfa">║</text>
+  <text x="65" y="245" font-size="10" fill="#22d3ee">[2]</text>
+  <text x="85" y="245" font-size="10" fill="#f0f0f0">View Skillbook</text>
+  <text x="370" y="245" font-size="10" fill="#a78bfa">║</text>
+  <text x="50" y="262" font-size="10" fill="#a78bfa">║</text>
+  <text x="65" y="262" font-size="10" fill="#22d3ee">[3]</text>
+  <text x="85" y="262" font-size="10" fill="#f0f0f0">Show Rank Progress</text>
+  <text x="370" y="262" font-size="10" fill="#a78bfa">║</text>
+  <text x="50" y="279" font-size="10" fill="#a78bfa">║</text>
+  <text x="65" y="279" font-size="10" fill="#22d3ee">[4]</text>
+  <text x="85" y="279" font-size="10" fill="#f0f0f0">Daily XP Summary</text>
+  <text x="370" y="279" font-size="10" fill="#a78bfa">║</text>
+  <text x="50" y="296" font-size="10" fill="#a78bfa">║</text>
+  <text x="65" y="296" font-size="10" fill="#22d3ee">[5]</text>
+  <text x="85" y="296" font-size="10" fill="#f0f0f0">Lifetime Stats</text>
+  <text x="370" y="296" font-size="10" fill="#a78bfa">║</text>
+  <text x="50" y="313" font-size="10" fill="#a78bfa">║</text>
+  <text x="65" y="313" font-size="10" fill="#22d3ee">[9]</text>
+  <text x="85" y="313" font-size="10" fill="#f0f0f0">Generate Daily Quest</text>
+  <text x="370" y="313" font-size="10" fill="#a78bfa">║</text>
+  <text x="50" y="330" font-size="10" fill="#a78bfa">╚══════════════════════════════════════════════════════╝</text>
+  <!-- Selected option output -->
+  <text x="50" y="360" font-size="10" fill="#10b981">root@xp:~$</text>
+  <text x="135" y="360" font-size="10" fill="#22d3ee">./final_ver_lev_up_sys.sh</text>
+  <!-- Skillbook output -->
+  <text x="50" y="388" font-size="10" fill="#a78bfa" font-weight="bold">[ SKILLBOOK — Unlocked Skills ]</text>
+  <text x="50" y="408" font-size="10" fill="#22d3ee">  ⚡ Reconnaissance</text>
+  <text x="50" y="425" font-size="10" fill="#22d3ee">  ⚡ Web Enumeration</text>
+  <text x="50" y="442" font-size="10" fill="#22d3ee">  ⚡ Vulnerability Analysis</text>
+  <text x="50" y="459" font-size="10" fill="#64748b">  🔒 exploit_dev (LOCKED — requires LVL 10)</text>
+  <text x="50" y="476" font-size="10" fill="#64748b">  🔒 privilege_esc (LOCKED — requires LVL 15)</text>
+  <text x="50" y="500" font-size="10" fill="#10b981">✨ Daily Quest: Complete 3 NMAP scans (+50 XP)</text>
+</svg>
