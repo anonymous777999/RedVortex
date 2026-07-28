@@ -73,7 +73,13 @@ const COMMANDS = {
   },
   date: {
     desc: 'Current date/time',
-    fn: () => `  ${new Date().toLocaleString('en-US', { timeZone: 'Asia/Kolkata', timeStyle: 'full', dateStyle: 'full' })} IST`,
+    fn: () => {
+      try {
+        return `  ${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })} IST`
+      } catch {
+        return `  ${new Date().toString()}`
+      }
+    },
   },
   neofetch: {
     desc: 'System info (styled)',
@@ -82,7 +88,7 @@ const COMMANDS = {
   --------------------------
   OS:       Arch Linux (WSL2)
   Host:     Vercel (Next.js 14)
-  Kernel:   Node.js ${typeof process !== 'undefined' ? process.version : '20.x'}
+  Kernel:   Node.js ${typeof process !== 'undefined' && process.version ? process.version : '20.x'}
   Shell:    Interactive Terminal v2
   Uptime:   ∞
   Packages: ${projects.length} projects deployed
@@ -143,15 +149,29 @@ export default function Terminal() {
     const newHistory = [...history, cmd]
     setHistory(newHistory)
     setHistoryIndex(-1)
+
+    let output
+    if (trimmed === 'clear') {
+      setLines([])
+      return
+    }
+
+    const command = COMMANDS[trimmed]
+    if (command) {
+      try {
+        output = command.fn()
+      } catch (err) {
+        output = `Error running '${trimmed}': ${err.message}`
+      }
+    } else {
+      output = `bash: ${trimmed}: command not found. Try "help".`
+    }
+
     setLines(prev => [
       ...prev,
       { text: `$ ${cmd}`, isInput: true },
-      { text: COMMANDS[trimmed]?.fn() || (trimmed === 'clear' ? '' : `bash: ${trimmed}: command not found. Try "help".`), isOutput: true },
+      { text: output, isOutput: true },
     ])
-
-    if (trimmed === 'clear') {
-      setLines([])
-    }
   }, [history])
 
   const handleKeyDown = (e) => {
@@ -250,9 +270,9 @@ export default function Terminal() {
             {lines.map((line, i) => (
               <div key={i} className={`term-line ${line.isInput ? 'input' : 'output'}`}>
                 {line.isInput ? (
-                  <span dangerouslySetInnerHTML={{ __html: line.text.replace(/\n/g, '<br/>') }} />
+                  <span>{line.text}</span>
                 ) : (
-                  <span className="output-text" dangerouslySetInnerHTML={{ __html: line.text.replace(/\n/g, '<br/>').replace(/  /g, '&nbsp;&nbsp;') }} />
+                  <span className="output-text">{line.text}</span>
                 )}
               </div>
             ))}
