@@ -219,8 +219,8 @@ export default function Terminal() {
       <div className="boot-screen">
         <div className="boot-container">
           {bootLines.map((line, i) => (
-            <p key={i} className={`boot-line ${line.startsWith('[  OK  ]') ? 'ok' : ''}`}>
-              {line}
+            <p key={i} className={`boot-line ${typeof line === 'string' && line.startsWith('[  OK  ]') ? 'ok' : ''}`}>
+              {typeof line === 'string' ? line : ''}
             </p>
           ))}
         </div>
@@ -268,11 +268,11 @@ export default function Terminal() {
 
           <div className="term-body">
             {lines.map((line, i) => (
-              <div key={i} className={`term-line ${line.isInput ? 'input' : 'output'}`}>
-                {line.isInput ? (
-                  <span>{line.text}</span>
+              <div key={i} className={`term-line ${line?.isInput ? 'input' : 'output'}`}>
+                {line?.isInput ? (
+                  <span>{line?.text ?? ''}</span>
                 ) : (
-                  <span className="output-text">{line.text}</span>
+                  <span className="output-text">{line?.text ?? ''}</span>
                 )}
               </div>
             ))}
