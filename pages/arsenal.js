@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import SkillCard from '../components/SkillCard'
+import GitHubFeed from '../components/GitHubFeed'
 import { skills, personalInfo } from '../data/portfolio'
 
 export default function Arsenal() {
@@ -23,27 +24,8 @@ export default function Arsenal() {
 
           <div className="stats-section">
             <h2 className="section-title">// github_stats</h2>
-            <p className="section-subtitle">Live metrics</p>
-            <div className="stats-grid">
-              <div className="stat-card">
-                <div className="stat-value mono" style={{ color: '#22d3ee' }}>
-                  <img src="https://img.shields.io/github/followers/anonymous777999?style=for-the-badge&logo=github&color=22D3EE&labelColor=0A101F" alt="Followers" />
-                </div>
-                <p className="stat-label mono">GitHub Followers</p>
-              </div>
-              <div className="stat-card">
-                <div className="stat-value mono" style={{ color: '#a78bfa' }}>
-                  <img src="https://img.shields.io/github/stars/anonymous777999?style=for-the-badge&logo=github&color=A78BFA&labelColor=0A101F" alt="Stars" />
-                </div>
-                <p className="stat-label mono">Total Stars</p>
-              </div>
-              <div className="stat-card">
-                <div className="stat-value mono" style={{ color: '#10b981' }}>
-                  <img src="https://img.shields.io/github/repos/anonymous777999?style=for-the-badge&logo=github&color=10B981&labelColor=0A101F" alt="Repos" />
-                </div>
-                <p className="stat-label mono">Public Repositories</p>
-              </div>
-            </div>
+            <p className="section-subtitle">Live GitHub metrics & activity</p>
+            <GitHubFeed />
           </div>
         </div>
       </section>
